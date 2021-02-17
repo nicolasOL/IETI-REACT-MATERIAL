@@ -2,61 +2,31 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {TodoList} from "./TodoList";
-import TodoApp from "./components/TodoApp"
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import {Login} from './components/Login';
+import {Login} from './Login';
 import moment from "moment";
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
 
-class App extends Component {
+class TodoApp extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {items: [], text: '', priority: 0, dueDate: moment(), logged:false};
+        this.state = {items: [], text: '', priority: 0, dueDate: moment()};
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handlePriorityChange = this.handlePriorityChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-		
+
 
     render() {
-		const LoginView = () => (
-			<Login logged = {this.state.logged}/>
-		  );
 
-		const TodoAppView = () => (
-			  <TodoApp/>
-		  );
-		
         return (
-            <Router>
-                <div className="App">
-                    <header className="App-header">
-                        <img src={logo} className="App-logo" alt="logo"/>
-                        <h1 className="App-title">TODO React App</h1>
-                    </header>
-
-                    <br/>
-                    <br/>
-
-                    <ul>
-                        <li><Link to="/">Login</Link></li>
-                        <li><Link to="/todo">Todo</Link></li>
-                    </ul>
-
-                    <div>
-                        <Route exact path="/" component={LoginView}/>
-                        <Route path="/todo" component={TodoAppView}/>
-                    </div>
-                </div>
-            </Router>
-        );
-    }
-	/*
-        return (
-            <div className="App">
+            <div className="TodoApp">
+			
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h1 className="App-title">TODO React App</h1>
@@ -66,28 +36,28 @@ class App extends Component {
                 <br/>
                 <form onSubmit={this.handleSubmit} className="todo-form">
                     <h3>New TODO</h3>
-                    <label htmlFor="text" className="right-margin">
+                    <InputLabel htmlFor="text" className="right-margin">
                         Text:
-                    </label>
+                    </InputLabel>
 
-                    <input
-                        id="text"
+                    <Input   
+						id="text"
                         onChange={this.handleTextChange}
                         value={this.state.text}>
-                    </input>
+                    </Input>
 
                     <br/>
                     <br/>
-                    <label htmlFor="priority" className="right-margin">
+                    <InputLabel htmlFor="priority" className="right-margin">
                         Priority:
-                    </label>
+                    </InputLabel>
 
-                    <input
+                    <Input
                         id="priority"
                         type="number"
                         onChange={this.handlePriorityChange}
                         value={this.state.priority}>
-                    </input>
+                    </Input>
                     <br/>
                     <br/>
 
@@ -98,9 +68,9 @@ class App extends Component {
                         onChange={this.handleDateChange}>
                     </DatePicker>
                     <br/>
-                    <button>
+                    <Button type="submit" fullWidth	variant="contained"	color="primary"	className="submit">
                         Add #{this.state.items.length + 1}
-                    </button>
+                    </Button>
                 </form>
                 <br/>
                 <br/>
@@ -108,7 +78,6 @@ class App extends Component {
             </div>
         );
     }
-	*/
 
     handleTextChange(e) {
         this.setState({
@@ -151,4 +120,4 @@ class App extends Component {
 
 }
 
-export default App;
+export default TodoApp;
