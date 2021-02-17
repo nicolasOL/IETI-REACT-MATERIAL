@@ -1,3 +1,6 @@
+# Escuela Colombiana de Ingeniería Julio Garavito - Innovacion y emprendimiento en TI IETI - REACT MATERIAL - LABORATORIO 2
+### NICOLAS ORTEGA LIMAS
+
 <p align="center">
   <a href="https://material-ui.com/" rel="noopener" target="_blank"><img width="150" src="https://material-ui.com/static/logo.svg" alt="Material-UI logo"></a></p>
 </p>
